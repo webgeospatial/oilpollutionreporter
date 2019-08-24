@@ -44,6 +44,7 @@ export class SelectedlocationComponent implements OnInit {
       .subscribe(userlocation => this.userlocation = userlocation);
   }
 
+  //back button using location import
   goBack(): void {
     this.angularLocation.back();
   }
