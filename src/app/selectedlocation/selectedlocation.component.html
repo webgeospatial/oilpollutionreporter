@@ -1,0 +1,19 @@
+<div *ngIf="userlocation">
+<label>State:
+    <input [(ngModel)]="userlocation.state" placeholder="State"/>
+</label>
+<label>lga:
+    <input [(ngModel)]="userlocation.lga" placeholder="lga"/>
+ </label>
+ <label>ward:
+        <input [(ngModel)]="userlocation.ward" placeholder="ward"/>
+</label>
+<label>x:
+        <input [(ngModel)]="userlocation.x" placeholder="x"/>
+</label>
+<label>y:
+        <input [(ngModel)]="userlocation.y" placeholder="y"/>
+</label>
+</div>
+
+<button (click)="goBack()">go back</button>

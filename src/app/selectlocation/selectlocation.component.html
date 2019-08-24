@@ -1,0 +1,17 @@
+<h2>Where are you reporting from?</h2>
+<ul class="locations">
+  <li *ngFor="let eachlocation of userlocations"> 
+  <!--
+    //[class.selected]="userlocation === selectedLocation" 
+    //(click)="onSelect(userlocation)"
+  -->  
+    <a routerLink="/selecteditem/{{eachlocation.id}}">
+    <span class="locations">{{eachlocation.id}} {{eachlocation.state}} {{eachlocation.lga}} {{eachlocation.ward}} {{eachlocation.x}} {{eachlocation.y}}</span>
+  </a>
+  </li>
+</ul>
+
+<!--call in selectedlocation component passing in the selectedLocation variable-->
+<!--app-selectedlocation [userlocation]="selectedLocation"></app-selectedlocation-->
+
+

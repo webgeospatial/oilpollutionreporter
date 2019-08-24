@@ -1,0 +1,8 @@
+<div *ngIf="PublicInstanceOfMessageService.messages.length">
+
+    <h2>Messages</h2>
+    <button class="clear"
+            (click)="PublicInstanceOfMessageService.clear()">clear</button>
+    <div *ngFor='let message of PublicInstanceOfMessageService.messages'> {{message}} </div>
+  
+  </div>

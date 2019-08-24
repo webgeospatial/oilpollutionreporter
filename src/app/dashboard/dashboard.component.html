@@ -1,0 +1,8 @@
+<h3>Dasboard template output</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let eachlocation of locations" class="col-1-4" routerLink="/selecteditem/{{eachlocation.id}}">
+    <div class="module locations">
+      <h4>{{eachlocation.state}}, {{eachlocation.lga}}</h4>
+    </div>
+  </a>
+</div>
