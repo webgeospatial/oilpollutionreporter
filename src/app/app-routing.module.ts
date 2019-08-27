@@ -17,7 +17,7 @@ const routes: Routes = [
 
 ];
 
-//makes this available everywhere (I think)
+//makes this routing module available everywhere
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

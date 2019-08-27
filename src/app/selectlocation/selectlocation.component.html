@@ -1,14 +1,24 @@
 <h2>Where are you reporting from?</h2>
 <ul class="locations">
   <li *ngFor="let eachlocation of userlocations"> 
-  <!--
-    //[class.selected]="userlocation === selectedLocation" 
-    //(click)="onSelect(userlocation)"
-  -->  
     <a routerLink="/selecteditem/{{eachlocation.id}}">
     <span class="locations">{{eachlocation.id}} {{eachlocation.state}} {{eachlocation.lga}} {{eachlocation.ward}} {{eachlocation.x}} {{eachlocation.y}}</span>
-  </a>
+    </a>
+      <button class="delete" title="delete item" (click)="delete(eachlocation)">x</button>
   </li>
+
+  <h2>Add new address</h2>
+
+  <div>
+      <label>State:
+        <input #locationState />
+      </label>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button (click)="add(locationState.value); locationState.value=''">
+        add
+      </button>
+    </div>
+
 </ul>
 
 <!--call in selectedlocation component passing in the selectedLocation variable-->

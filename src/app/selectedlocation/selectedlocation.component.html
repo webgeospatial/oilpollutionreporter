@@ -1,4 +1,7 @@
 <div *ngIf="userlocation">
+
+<h2>{{userlocation.state | uppercase}}</h2>
+
 <label>State:
     <input [(ngModel)]="userlocation.state" placeholder="State"/>
 </label>
@@ -16,4 +19,4 @@
 </label>
 </div>
 
-<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button> | <button (click)="goBack()">go back</button>

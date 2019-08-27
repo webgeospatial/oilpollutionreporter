@@ -27,6 +27,6 @@ export class DashboardComponent implements OnInit {
   //function to subscribe to the service
   getServiceOutputs(): void {
     this.localDashboardService.LoadLocationOptions()
-      .subscribe(locations => this.locations = locations.slice(1, 5));
+      .subscribe(locations => this.locations = locations.slice(0, 20));
   }
 }

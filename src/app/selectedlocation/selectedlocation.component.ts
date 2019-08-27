@@ -37,11 +37,17 @@ export class SelectedlocationComponent implements OnInit {
   }
   
   getItemID(): void {
-    //set the id variable
+    //set the id variable for this selected item from the url route
     const id = +this.currentRoute.snapshot.paramMap.get('id');
-    //???????
+    //get the item with that id from the local service instance
     this.localServiceInstance.getItemID(id)
+    //by subscribing to the service and assigning it
       .subscribe(userlocation => this.userlocation = userlocation);
+  }
+
+  save(): void {
+    this.localServiceInstance.updateItem(this.userlocation)
+      .subscribe(() => this.goBack());
   }
 
   //back button using location import

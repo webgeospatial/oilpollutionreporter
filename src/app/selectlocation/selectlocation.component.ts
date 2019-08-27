@@ -32,6 +32,21 @@ export class SelectlocationComponent implements OnInit {
       //subscribe to the Observable and apply it to userlocations variable
       .subscribe(userlocations => this.userlocations = userlocations) 
   }
+
+  //add a new item to the list
+  add(state: string): void {
+    state = state.trim();
+    if (!state) { return; }
+    this.PrivateInstanceOfService.addItem({ state } as locationClassDefinition)
+      .subscribe(userlocations => {
+        this.userlocations.push(userlocations);
+      });
+  }
+
+  delete(userlocations: locationClassDefinition): void {
+    this.userlocations = this.userlocations.filter(h => h !== userlocations);
+    this.PrivateInstanceOfService.deleteItem(userlocations).subscribe();
+  }
   
 
 }
