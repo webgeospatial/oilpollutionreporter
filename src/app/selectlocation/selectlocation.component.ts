@@ -1,5 +1,5 @@
 //import core angular functions needed by this component
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //import the data structure and type definitiion - added here to aid binding
 import { locationClassDefinition } from '../selectlocation';
 //import the service export
@@ -7,8 +7,10 @@ import { GetlocationsService } from '../getlocations.service';
 
 //attempt at includng a leaflet module and parts
 //import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { latLng, tileLayer, circle, polygon, Map } from 'leaflet';
-import { reduce } from 'rxjs/operators';
+import { latLng, tileLayer, circle, Map, } from 'leaflet';
+declare let L;
+
+//import { reduce } from 'rxjs/operators';
 
 //define this components parts
 @Component({
@@ -41,14 +43,25 @@ export class SelectlocationComponent implements OnInit {
   //calls methods from this component 
   ngOnInit() {
     this.LoadLocations();
-    this.setupMap();
-  }
+    //statically loaded leaflet instance
+    const map = L.map('staticmap').setView([ 5.3, 6.4 ], 7);
 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    this.setupMap();
+
+  }
+ 
   //registering a mapready event
   onMapReady(map: Map) : void {
     // Onclick set the location variables
-    map.on('click', () => {
-      this.clickedCoords = map.mouseEventToLatLng(event);
+    map.on('click', <LeafletMouseEvent>(event) => {
+      console.log(event.latlng);
+      //this.clickedCoords = map.mouseEventToLatLng(event);
+      this.clickedCoords = event.latlng;
       this.Lat = this.clickedCoords.lat;
       this.Lon = this.clickedCoords.lng;
       this.clickedCoords = 'LatLng {lat:' + this.Lat + ',lng:' + this.Lon + '}';
@@ -58,7 +71,6 @@ export class SelectlocationComponent implements OnInit {
     });
   }
 
-  
   //setupmap
   setupMap() : void { 
 
@@ -82,8 +94,8 @@ export class SelectlocationComponent implements OnInit {
     overlays: {
       //'Big Circle': circle([ 5.3, 6.4 ], { radius: 10000 })
     }
-    
-  }
+    }
+ 
   }
 
   //internal component function to assign the data made available from the private service instance to this.userlocations

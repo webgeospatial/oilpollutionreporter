@@ -2,20 +2,24 @@
 
 <h2>Where are you reporting from?</h2>
 <hr />
-  <button (click)="getBrowserLocation();">Set the locations</button><br />
+  <button (click)="getBrowserLocation();">Get browser location</button><br />
 From the browsers geolation:
 {{browserCoords}}<br/>
 From the map:
 {{clickedCoords}}
 {{locationMessage}}
 <hr />
-<div *ngIf="options" class="map"
+<div class="map" *ngIf="options" 
      leaflet 
      [leafletOptions]="options"
      [leafletLayersControl]="layersControl"
      [leafletLayers]="layers"
      (leafletMapReady)="onMapReady($event)">
 </div>
+
+<hr />
+
+<div id="staticmap"></div>
 
 <hr />
 
