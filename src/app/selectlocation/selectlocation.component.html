@@ -1,4 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+
 <h2>Where are you reporting from?</h2>
+<hr />
+  <button (click)="getBrowserLocation();">Set the locations</button><br />
+From the browsers geolation:
+{{browserCoords}}<br/>
+From the map:
+{{clickedCoords}}
+{{locationMessage}}
+<hr />
+<div *ngIf="options" class="map"
+     leaflet 
+     [leafletOptions]="options"
+     [leafletLayersControl]="layersControl"
+     [leafletLayers]="layers"
+     (leafletMapReady)="onMapReady($event)">
+</div>
+
+<hr />
+
+
 <ul class="locations">
   <li *ngFor="let eachlocation of userlocations"> 
     <a routerLink="/selecteditem/{{eachlocation.id}}">

@@ -1,4 +1,15 @@
-/* HeroesComponent's private CSS styles */
+/*
+@import "../../../node_modules/leaflet/dist/leaflet.css";
+*/
+
+.map {
+  float: none;
+  height: 300px;
+  width: 450px;
+  padding: 0px;
+  margin: auto;
+  border: 1px solid #000;
+  }
 .locations {
     margin: 0 0 2em 0;
     list-style-type: none;
@@ -42,3 +53,5 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+  
